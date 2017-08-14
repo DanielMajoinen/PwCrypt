@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="PwCrypt_android" target="1.8" />
+      <module name="PwCrypt_desktop" target="1.8" />
+      <module name="PwCrypt_embedded" target="1.8" />
+      <module name="PwCrypt_ios" target="1.8" />
+      <module name="PwCrypt_main" target="1.8" />
+      <module name="PwCrypt_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

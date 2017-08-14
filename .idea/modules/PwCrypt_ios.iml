@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="PwCrypt:ios" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/../../out/ios/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../src/ios">
+      <sourceFolder url="file://$MODULE_DIR$/../../src/ios/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/ios/resources" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="PwCrypt_main" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../libs/DatabaseUtils-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm:4.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-display:3.5.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle:3.5.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-statusbar:3.5.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-storage:3.5.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.mobidevelop.robovm:robovm-cocoatouch:2.3.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:connect:1.4.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-cloudlink-client:4.3.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-display-ios:3.5.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-glisten-connect-view:4.3.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle-ios:3.5.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-glisten:4.3.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-core:3.5.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-statusbar-ios:3.5.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.mobidevelop.robovm:robovm-objc:2.3.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-storage-ios:3.5.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.glassfish:javax.json:1.0.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-device:3.2.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-push-notifications:3.2.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-runtime-args:3.2.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-core-ios:3.5.0" level="project" />
+  </component>
+</module>

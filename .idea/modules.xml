@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PwCrypt.iml" filepath="$PROJECT_DIR$/.idea/modules/PwCrypt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PwCrypt_android.iml" filepath="$PROJECT_DIR$/.idea/modules/PwCrypt_android.iml" group="PwCrypt" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PwCrypt_desktop.iml" filepath="$PROJECT_DIR$/.idea/modules/PwCrypt_desktop.iml" group="PwCrypt" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PwCrypt_embedded.iml" filepath="$PROJECT_DIR$/.idea/modules/PwCrypt_embedded.iml" group="PwCrypt" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PwCrypt_ios.iml" filepath="$PROJECT_DIR$/.idea/modules/PwCrypt_ios.iml" group="PwCrypt" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PwCrypt_main.iml" filepath="$PROJECT_DIR$/.idea/modules/PwCrypt_main.iml" group="PwCrypt" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PwCrypt_test.iml" filepath="$PROJECT_DIR$/.idea/modules/PwCrypt_test.iml" group="PwCrypt" />
+    </modules>
+  </component>
+</project>
