@@ -3,17 +3,15 @@ package com.majoinen.d.pwcrypt;
 import com.gluonhq.charm.down.Platform;
 import com.gluonhq.charm.down.Services;
 import com.gluonhq.charm.down.plugins.LifecycleService;
-import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.application.ViewStackPolicy;
 import com.gluonhq.charm.glisten.control.Avatar;
 import com.gluonhq.charm.glisten.control.NavigationDrawer;
 import com.gluonhq.charm.glisten.control.NavigationDrawer.Item;
 import com.gluonhq.charm.glisten.control.NavigationDrawer.ViewItem;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import com.majoinen.d.pwcrypt.views.ViewManager;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
-
-import static com.majoinen.d.pwcrypt.PwCrypt.*;
 
 public class DrawerManager {
 
@@ -27,10 +25,10 @@ public class DrawerManager {
           new Image(DrawerManager.class.getResourceAsStream("/icon.png"))));
         drawer.setHeader(header);
 
-        final Item primaryItem = new ViewItem("Primary",
-          MaterialDesignIcon.HOME.graphic(), LOGIN_VIEW, ViewStackPolicy.SKIP);
+        final Item primaryItem = new ViewItem("Primary", MaterialDesignIcon.HOME
+          .graphic(), ViewManager.LOGIN_VIEW, ViewStackPolicy.SKIP);
         final Item secondaryItem = new ViewItem("Secondary",
-          MaterialDesignIcon.DASHBOARD.graphic(), REGISTER_VIEW);
+          MaterialDesignIcon.DASHBOARD.graphic(), ViewManager.REGISTER_VIEW);
         drawer.getItems().addAll(primaryItem, secondaryItem);
 
         if (Platform.isDesktop()) {
@@ -45,12 +43,12 @@ public class DrawerManager {
             drawer.getItems().add(quitItem);
         }
 
-        drawer.addEventHandler(NavigationDrawer.ITEM_SELECTED,
-                e -> MobileApplication.getInstance().hideLayer(MENU_LAYER));
+        drawer.addEventHandler(NavigationDrawer.ITEM_SELECTED, e ->
+          PwCrypt.getInstance().hideLayer(ViewManager.MENU_LAYER));
 
-        MobileApplication.getInstance().viewProperty().addListener(
+        PwCrypt.getInstance().viewProperty().addListener(
           (obs, oldView, newView) -> updateItem(newView.getName()));
-        updateItem(LOGIN_VIEW);
+        updateItem(ViewManager.LOGIN_VIEW);
     }
 
     private void updateItem(String nameView) {
