@@ -20,6 +20,7 @@ repositories {
 
 dependencies {
     compile files('libs/DatabaseUtils-1.0.jar')
+    compile files('libs/EncryptionUtils-1.0.jar')
     compile 'com.gluonhq:charm:4.3.3'
     desktopRuntime 'org.xerial:sqlite-jdbc:3.8.11.2'
     embeddedRuntime 'org.xerial:sqlite-jdbc:3.7.2'

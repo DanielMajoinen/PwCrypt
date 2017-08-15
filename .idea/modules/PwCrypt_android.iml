@@ -22,6 +22,15 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../libs/EncryptionUtils-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
           <root url="jar://$USER_HOME$/Library/Android/sdk/platforms/android-26/android.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -31,8 +40,8 @@
     <orderEntry type="library" name="Gradle: org.javafxports:jfxdvk:8.60.9" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm:4.3.3" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-display:3.5.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.sqldroid:sqldroid:1.0.3" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle:3.5.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.sqldroid:sqldroid:1.0.3" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-statusbar:3.5.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.android.support:multidex:aar:1.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-storage:3.5.0" level="project" />

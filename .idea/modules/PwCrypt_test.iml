@@ -19,6 +19,15 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../libs/EncryptionUtils-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Gradle: com.gluonhq:charm:4.3.3" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-display:3.5.0" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle:3.5.0" level="project" />
