@@ -1,7 +1,7 @@
 package com.majoinen.d.pwcrypt.views;
 
+import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.layout.layer.SidePopupView;
-import com.majoinen.d.pwcrypt.DrawerManager;
 import com.majoinen.d.pwcrypt.PwCrypt;
 import com.majoinen.d.pwcrypt.views.login.LoginView;
 import com.majoinen.d.pwcrypt.views.register.RegisterView;
@@ -21,15 +21,15 @@ public class ViewManager {
 
     private ViewManager() { }
 
-    public static void initViews() {
-        PwCrypt.getInstance().addViewFactory(LOGIN_VIEW, () ->
+    public static void initViews(MobileApplication application) {
+        application.addViewFactory(LOGIN_VIEW, () ->
           new LoginView(LOGIN_VIEW).getView());
-        PwCrypt.getInstance().addViewFactory(REGISTER_VIEW, () ->
+        application.addViewFactory(REGISTER_VIEW, () ->
           new RegisterView(REGISTER_VIEW).getView());
     }
 
-    public static void initLayers() {
-        PwCrypt.getInstance().addLayerFactory(MENU_LAYER, () ->
+    public static void initLayers(MobileApplication application) {
+        application.addLayerFactory(MENU_LAYER, () ->
           new SidePopupView(new DrawerManager().getDrawer()));
     }
 }

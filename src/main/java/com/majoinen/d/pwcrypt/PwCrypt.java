@@ -17,8 +17,8 @@ public class PwCrypt extends MobileApplication {
 
     @Override
     public void init() {
-        ViewManager.initViews();
-        ViewManager.initLayers();
+        ViewManager.initViews(this);
+        ViewManager.initLayers(this);
     }
 
     @Override
