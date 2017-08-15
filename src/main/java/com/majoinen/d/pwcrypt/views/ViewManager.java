@@ -17,7 +17,7 @@ public class ViewManager {
     public static final String REGISTER_VIEW = "Register View";
 
     /* Layers */
-    private static final String MENU_LAYER = "Side Menu";
+    public static final String MENU_LAYER = "Side Menu";
 
     private ViewManager() { }
 
