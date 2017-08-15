@@ -1,8 +1,8 @@
 package com.majoinen.d.pwcrypt.views.register;
 
-import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.majoinen.d.pwcrypt.PwCrypt;
+import com.majoinen.d.pwcrypt.views.ViewManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -24,13 +24,12 @@ public class RegisterPresenter {
 
     public void initialize() {
         // Hide the AppBar
-        view.setOnShowing(event -> {
-          MobileApplication.getInstance().getAppBar().setVisible(false);
-        });
+        view.setOnShowing(event ->
+          PwCrypt.getInstance().getAppBar().setVisible(false));
     }
 
     @FXML
     private void gotoLogin() {
-        MobileApplication.getInstance().switchView(PwCrypt.LOGIN_VIEW);
+        PwCrypt.getInstance().switchView(ViewManager.LOGIN_VIEW);
     }
 }

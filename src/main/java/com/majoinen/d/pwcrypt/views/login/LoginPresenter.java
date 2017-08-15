@@ -1,10 +1,10 @@
 package com.majoinen.d.pwcrypt.views.login;
 
-import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.majoinen.d.pwcrypt.PwCrypt;
 import com.majoinen.d.pwcrypt.log.LogManager;
 import com.majoinen.d.pwcrypt.log.Logger;
+import com.majoinen.d.pwcrypt.views.ViewManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -30,13 +30,13 @@ public class LoginPresenter {
     public void initialize() {
         // Hide the AppBar & remove focus from email box
         view.setOnShowing(event -> {
-            MobileApplication.getInstance().getAppBar().setVisible(false);
+            PwCrypt.getInstance().getAppBar().setVisible(false);
             view.requestFocus();
         });
     }
 
     @FXML
     private void gotoRegister() {
-        MobileApplication.getInstance().switchView(PwCrypt.REGISTER_VIEW);
+        PwCrypt.getInstance().switchView(ViewManager.REGISTER_VIEW);
     }
 }
