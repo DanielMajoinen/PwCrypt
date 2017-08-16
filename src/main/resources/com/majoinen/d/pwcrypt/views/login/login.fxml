@@ -35,11 +35,17 @@
             </AnchorPane>
             <VBox maxWidth="350.0" spacing="15.0">
                <children>
+                  <Label text="Login">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Separator prefWidth="200.0" />
                   <VBox>
                      <children>
                         <HBox>
                            <children>
-                              <Label text="Email">
+                              <Label fx:id="emailLabel" text="Email">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
@@ -62,7 +68,7 @@
                      <children>
                         <HBox>
                            <children>
-                              <Label text="Master Password">
+                              <Label fx:id="passwordLabel" text="Master Password">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
@@ -81,7 +87,7 @@
                         </PasswordField>
                      </children>
                   </VBox>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#login" text="Login">
+                  <Button fx:id="loginButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#login" text="Login">
                      <font>
                         <Font name="Helvetica Neue Bold" size="13.0" />
                      </font>

@@ -1,5 +1,6 @@
 package com.majoinen.d.pwcrypt.controllers;
 
+import com.majoinen.d.pwcrypt.input.InputStyle;
 import com.majoinen.d.pwcrypt.views.login.LoginPresenter;
 
 /**
@@ -12,5 +13,12 @@ public class LoginController {
 
     public void setView(LoginPresenter view) {
         this.view = view;
+    }
+
+    public void login(String email, String password) {
+        view.styleEmailInput(InputStyle.ERROR);
+        view.stylePasswordInput(InputStyle.ERROR);
+        view.styleLoginButton(InputStyle.ERROR);
+        view.setButtonText("Incorrect credentials!");
     }
 }
