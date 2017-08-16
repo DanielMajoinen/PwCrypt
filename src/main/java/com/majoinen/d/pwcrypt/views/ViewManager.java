@@ -1,35 +1,56 @@
 package com.majoinen.d.pwcrypt.views;
 
+import com.gluonhq.charm.glisten.afterburner.AppView;
+import com.gluonhq.charm.glisten.afterburner.AppViewRegistry;
+import com.gluonhq.charm.glisten.afterburner.DefaultDrawerManager;
+import com.gluonhq.charm.glisten.afterburner.GluonPresenter;
 import com.gluonhq.charm.glisten.application.MobileApplication;
-import com.gluonhq.charm.glisten.layout.layer.SidePopupView;
+import com.gluonhq.charm.glisten.control.Avatar;
+import com.gluonhq.charm.glisten.control.NavigationDrawer;
+import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.majoinen.d.pwcrypt.PwCrypt;
-import com.majoinen.d.pwcrypt.views.login.LoginView;
-import com.majoinen.d.pwcrypt.views.register.RegisterView;
+import com.majoinen.d.pwcrypt.views.login.LoginPresenter;
+import com.majoinen.d.pwcrypt.views.register.RegisterPresenter;
+import javafx.scene.image.Image;
 
-/**
- * @author Daniel Majoinen
- * @version 1.0, 15/8/17
- */
+import java.util.Locale;
+
+import static com.gluonhq.charm.glisten.afterburner.AppView.Flag.*;
+
 public class ViewManager {
 
-    /* Views */
-    public static final String LOGIN_VIEW = PwCrypt.HOME_VIEW;
-    public static final String REGISTER_VIEW = "Register View";
+    public static final AppViewRegistry REGISTRY = new AppViewRegistry();
 
-    /* Layers */
-    public static final String MENU_LAYER = "Side Menu";
+    public static final AppView LOGIN_VIEW =
+      view("Login View", LoginPresenter.class, MaterialDesignIcon.HOME,
+        HOME_VIEW, SKIP_VIEW_STACK);
 
-    private ViewManager() { }
+    public static final AppView REGISTER_VIEW =
+      view("Secondary", RegisterPresenter.class, MaterialDesignIcon.DASHBOARD);
 
-    public static void initViews(MobileApplication application) {
-        application.addViewFactory(LOGIN_VIEW, () ->
-          new LoginView(LOGIN_VIEW).getView());
-        application.addViewFactory(REGISTER_VIEW, () ->
-          new RegisterView(REGISTER_VIEW).getView());
+    private static AppView view(String title, Class<? extends GluonPresenter<?>>
+      presenterClass, MaterialDesignIcon menuIcon, AppView.Flag... flags ) {
+        return REGISTRY.createView(name(presenterClass), title, presenterClass,
+          menuIcon, flags);
     }
 
-    public static void initLayers(MobileApplication application) {
-        application.addLayerFactory(MENU_LAYER, () ->
-          new SidePopupView(new DrawerManager().getDrawer()));
+    private static String name(Class<? extends GluonPresenter<?>>
+      presenterClass) {
+        return presenterClass.getSimpleName().toUpperCase(Locale.ROOT)
+          .replace("PRESENTER", "");
+    }
+
+    public static void registerViewsAndDrawer(MobileApplication app) {
+        for (AppView view : REGISTRY.getViews())
+            view.registerView(app);
+
+        NavigationDrawer.Header header = new NavigationDrawer.Header(
+          "PwCrypt", "Multi View Project", new Avatar(21,
+          new Image(PwCrypt.class.getResourceAsStream("/icon.png"))));
+
+        DefaultDrawerManager drawerManager =
+          new DefaultDrawerManager(app, header, REGISTRY.getViews());
+
+        drawerManager.installDrawer();
     }
 }

@@ -1,5 +1,6 @@
 package com.majoinen.d.pwcrypt.views.login;
 
+import com.gluonhq.charm.glisten.afterburner.GluonPresenter;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.majoinen.d.pwcrypt.PwCrypt;
 import com.majoinen.d.pwcrypt.log.LogManager;
@@ -9,7 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class LoginPresenter {
+import javax.inject.Inject;
+
+public class LoginPresenter extends GluonPresenter<PwCrypt> {
 
     private static final Logger logger =
       LogManager.getLogger(LoginPresenter.class);
@@ -38,6 +41,6 @@ public class LoginPresenter {
 
     @FXML
     private void gotoRegister() {
-        PwCrypt.getInstance().switchView(ViewManager.REGISTER_VIEW);
+        ViewManager.REGISTER_VIEW.switchView();
     }
 }

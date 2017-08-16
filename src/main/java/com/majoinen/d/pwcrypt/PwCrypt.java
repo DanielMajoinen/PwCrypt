@@ -37,17 +37,16 @@ public class PwCrypt extends MobileApplication {
     public void init() throws Exception {
         logger.debug("Private Storage: " + Path.File.privateStorage());
         deviceUuid = DeviceUUIDInitialiser.initDeviceUUID();
-        ViewManager.initViews(this);
-        ViewManager.initLayers(this);
+        ViewManager.registerViewsAndDrawer(this);
     }
 
     @Override
     public void postInit(Scene scene) {
-        Swatch.BLUE.assignTo(scene);
-
+        // Set window dimensions
         ((Stage) scene.getWindow()).setMinWidth(WINDOW_MIN_WIDTH);
         ((Stage) scene.getWindow()).setMinHeight(WINDOW_MIN_HEIGHT);
-
+        // Set global styling
+        Swatch.BLUE.assignTo(scene);
         scene.getStylesheets().add(PwCrypt.class.getResource(GLOBAL_CSS)
           .toExternalForm());
         ((Stage) scene.getWindow()).getIcons().add(new Image(PwCrypt.class

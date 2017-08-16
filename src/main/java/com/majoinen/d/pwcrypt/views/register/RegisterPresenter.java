@@ -1,5 +1,6 @@
 package com.majoinen.d.pwcrypt.views.register;
 
+import com.gluonhq.charm.glisten.afterburner.GluonPresenter;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.majoinen.d.pwcrypt.PwCrypt;
 import com.majoinen.d.pwcrypt.input.EmailValidator;
@@ -14,7 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class RegisterPresenter {
+public class RegisterPresenter extends GluonPresenter<PwCrypt> {
 
     private static final Logger logger =
       LogManager.getLogger(RegisterPresenter.class);
@@ -57,7 +58,7 @@ public class RegisterPresenter {
     private void gotoLogin() {
         clear(emailInput, emailErrorLabel);
         clear(passwordInput, passwordErrorLabel);
-        PwCrypt.getInstance().switchView(ViewManager.LOGIN_VIEW);
+        ViewManager.LOGIN_VIEW.switchView();
     }
 
     private void initTextField(TextField textField, Label errorLabel) {
