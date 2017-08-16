@@ -16,6 +16,8 @@ public class PwCrypt extends MobileApplication {
     private static final Logger logger =
       LogManager.getLogger(PwCrypt.class);
 
+    public static final String DATABASE_CONFIG = "account_database";
+
     private static final int WINDOW_MIN_WIDTH = 350;
 
     private static final int WINDOW_MIN_HEIGHT = 600;
