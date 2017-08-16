@@ -3,6 +3,7 @@ package com.majoinen.d.pwcrypt.views.register;
 import com.gluonhq.charm.glisten.afterburner.GluonPresenter;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.majoinen.d.pwcrypt.PwCrypt;
+import com.majoinen.d.pwcrypt.controllers.RegisterController;
 import com.majoinen.d.pwcrypt.input.EmailValidator;
 import com.majoinen.d.pwcrypt.views.StyleManager;
 import com.majoinen.d.pwcrypt.input.ValidationResult;
@@ -14,6 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import javax.inject.Inject;
 
 public class RegisterPresenter extends GluonPresenter<PwCrypt> {
 
@@ -38,7 +41,11 @@ public class RegisterPresenter extends GluonPresenter<PwCrypt> {
     @FXML
     private Button register;
 
+    @Inject
+    private RegisterController registerController;
+
     public void initialize() {
+        registerController.setView(this);
         // Hide the AppBar
         view.setOnShowing(event ->
           PwCrypt.getInstance().getAppBar().setVisible(false));
