@@ -3,6 +3,7 @@ package com.majoinen.d.pwcrypt.views.login;
 import com.gluonhq.charm.glisten.afterburner.GluonPresenter;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.majoinen.d.pwcrypt.PwCrypt;
+import com.majoinen.d.pwcrypt.controllers.LoginController;
 import com.majoinen.d.pwcrypt.log.LogManager;
 import com.majoinen.d.pwcrypt.log.Logger;
 import com.majoinen.d.pwcrypt.views.ViewManager;
@@ -26,7 +27,11 @@ public class LoginPresenter extends GluonPresenter<PwCrypt> {
     @FXML
     private PasswordField passwordInput;
 
+    @Inject
+    private LoginController loginController;
+
     public void initialize() {
+        loginController.setView(this);
         // Hide the AppBar & remove focus from email box
         view.setOnShowing(event -> {
             PwCrypt.getInstance().getAppBar().setVisible(false);
