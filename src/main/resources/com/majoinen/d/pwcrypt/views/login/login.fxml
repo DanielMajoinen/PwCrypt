@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gluonhq.charm.glisten.mvc.View?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -16,37 +20,85 @@
    <center>
       <VBox alignment="TOP_CENTER" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane>
+            <AnchorPane minHeight="200.0" style="-fx-background-color: #333;">
                <children>
-                  <Label alignment="CENTER" minHeight="200.0" style="-fx-background-color: #333;" text="PwCrypt" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font name="Helvetica Neue Bold" size="18.0" />
-                     </font>
-                  </Label>
+                  <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <center>
+                        <ImageView fitHeight="170.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="BOTTOM_CENTER">
+                           <image>
+                              <Image url="@../assets/img/arch.png" />
+                           </image>
+                        </ImageView>
+                     </center>
+                  </BorderPane>
                </children>
             </AnchorPane>
             <VBox maxWidth="350.0" spacing="15.0">
                <children>
-                  <TextField fx:id="email" promptText="Email" style="-fx-border-color: #000;">
-                     <font>
-                        <Font name="Helvetica Neue" size="13.0" />
-                     </font>
-                  </TextField>
-                  <PasswordField fx:id="password" promptText="Password" style="-fx-border-color: #000;">
-                     <font>
-                        <Font name="Helvetica Neue" size="13.0" />
-                     </font>
-                  </PasswordField>
-                  <Button fx:id="login" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #05b239;" styleClass="flat" text="Login" textFill="WHITE">
+                  <VBox>
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label text="Email">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="emailErrorLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" scaleShape="false" textAlignment="RIGHT" textFill="RED" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <TextField fx:id="emailInput" styleClass="pwcrypt-input">
+                           <font>
+                              <Font name="Helvetica Neue" size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label text="Master Password">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="passwordErrorLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" scaleShape="false" textAlignment="RIGHT" textFill="RED" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <PasswordField fx:id="passwordInput" styleClass="pwcrypt-input">
+                           <font>
+                              <Font name="Helvetica Neue" size="13.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                  </VBox>
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#login" text="Login">
                      <font>
                         <Font name="Helvetica Neue Bold" size="13.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="green-button" />
+                        <String fx:value="flat" />
+                     </styleClass>
                   </Button>
                   <Separator prefWidth="200.0" />
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#gotoRegister" style="-fx-border-color: #b26404;" styleClass="flat" text="Create Profile" textFill="#b26404">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#gotoRegister" text="Create Account">
                      <font>
                         <Font name="Helvetica Neue" size="13.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="flat" />
+                        <String fx:value="orange-button-hollow" />
+                     </styleClass>
                   </Button>
                </children>
                <padding>

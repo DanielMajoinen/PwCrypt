@@ -6,7 +6,6 @@ import com.majoinen.d.pwcrypt.log.LogManager;
 import com.majoinen.d.pwcrypt.log.Logger;
 import com.majoinen.d.pwcrypt.views.ViewManager;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -19,13 +18,10 @@ public class LoginPresenter {
     private View view;
 
     @FXML
-    private Button login;
+    private TextField emailInput;
 
     @FXML
-    private TextField email;
-
-    @FXML
-    private PasswordField password;
+    private PasswordField passwordInput;
 
     public void initialize() {
         // Hide the AppBar & remove focus from email box
@@ -33,6 +29,11 @@ public class LoginPresenter {
             PwCrypt.getInstance().getAppBar().setVisible(false);
             view.requestFocus();
         });
+    }
+
+    @FXML
+    private void login() {
+
     }
 
     @FXML
