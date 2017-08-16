@@ -22,6 +22,14 @@
     -fx-text-fill: red;
 }
 
+.root .pwcrypt-label {
+    -fx-text-fill: black;
+}
+
+.root .pwcrypt-label-error {
+    -fx-text-fill: red;
+}
+
 .root .button:hover {
     -fx-cursor: hand;
 }
