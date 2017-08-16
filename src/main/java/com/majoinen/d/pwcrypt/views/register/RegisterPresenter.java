@@ -55,8 +55,8 @@ public class RegisterPresenter extends GluonPresenter<PwCrypt> {
         view.setOnShowing(event ->
           PwCrypt.getInstance().getAppBar().setVisible(false));
 
-        initTextField(emailInput, emailLabel, emailErrorLabel);
-        initTextField(passwordInput, passwordLabel, passwordErrorLabel);
+        setOnChange(emailInput);
+        setOnChange(passwordInput);
     }
 
     @FXML
@@ -71,11 +71,12 @@ public class RegisterPresenter extends GluonPresenter<PwCrypt> {
         ViewManager.LOGIN_VIEW.switchView();
     }
 
-    private void initTextField(TextField textField, Label label,
-      Label errorLabel) {
+    private void setOnChange(TextField textField) {
         textField.textProperty().addListener((obs, ov, nv) -> {
-            InputStyleManager.styleInputNormal(textField, label);
-            errorLabel.setText(null);
+            InputStyleManager.styleInputNormal(emailInput, emailLabel);
+            InputStyleManager.styleInputNormal(passwordInput, passwordLabel);
+            emailErrorLabel.setText(null);
+            passwordErrorLabel.setText(null);
         });
     }
 

@@ -35,6 +35,12 @@
             </AnchorPane>
             <VBox maxWidth="350.0" spacing="15.0">
                <children>
+                  <Label text="Register">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Separator prefWidth="200.0" />
                   <VBox>
                      <children>
                         <HBox>
@@ -44,7 +50,7 @@
                                     <Font size="10.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="emailErrorLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" scaleShape="false" textAlignment="RIGHT" textFill="RED" wrapText="true" HBox.hgrow="ALWAYS">
+                              <Label fx:id="emailErrorLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" scaleShape="false" styleClass="pwcrypt-label-error" textAlignment="RIGHT" textFill="RED" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
@@ -67,7 +73,7 @@
                                     <Font size="10.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="passwordErrorLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" scaleShape="false" textAlignment="RIGHT" textFill="RED" wrapText="true" HBox.hgrow="ALWAYS">
+                              <Label fx:id="passwordErrorLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" scaleShape="false" styleClass="pwcrypt-label-error" textAlignment="RIGHT" textFill="RED" wrapText="true" HBox.hgrow="ALWAYS">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
