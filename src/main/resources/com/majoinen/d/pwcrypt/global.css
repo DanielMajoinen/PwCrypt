@@ -11,3 +11,69 @@
     -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
     -fx-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.root .pwcrypt-input {
+    -fx-border-color: black;
+    -fx-text-fill: black;
+}
+
+.root .pwcrypt-input-error {
+    -fx-border-color: red;
+    -fx-text-fill: red;
+}
+
+.root .button:hover {
+    -fx-cursor: hand;
+}
+
+.root .green-button {
+    -fx-text-fill: #fff;
+    -fx-background-color: #05b239;
+}
+
+.root .green-button:hover {
+    -fx-background-color: #05802d;
+}
+
+.root .green-button-hollow {
+    -fx-text-fill: #05b239;
+    -fx-border-color: #05b239;
+    -fx-background-color: none;
+}
+
+.root .green-button-hollow:hover {
+    -fx-text-fill: #fff;
+    -fx-background-color: #05b239;
+}
+
+.root .orange-button {
+    -fx-text-fill: #fff;
+    -fx-background-color: #b26404;
+}
+
+.root .orange-button-hollow {
+    -fx-text-fill: #b26404;
+    -fx-border-color: #b26404;
+    -fx-background-color: none;
+}
+
+.root .orange-button-hollow:hover {
+    -fx-text-fill: #fff;
+    -fx-background-color: #b26404;
+}
+
+.root .red-button {
+    -fx-text-fill: #fff;
+    -fx-background-color: #b22f31;
+}
+
+.root .red-button-hollow {
+    -fx-text-fill: #b22f31;
+    -fx-border-color: #b22f31;
+    -fx-background-color: none;
+}
+
+.root .red-button-hollow:hover {
+    -fx-text-fill: #fff;
+    -fx-background-color: #b22f31;
+}
