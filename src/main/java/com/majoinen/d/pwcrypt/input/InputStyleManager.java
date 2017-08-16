@@ -1,5 +1,6 @@
 package com.majoinen.d.pwcrypt.input;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -10,6 +11,23 @@ import javafx.scene.control.TextField;
 public class InputStyleManager {
 
     private InputStyleManager() { }
+
+    public static void styleInput(Button button, InputStyle style) {
+        if(style.equals(InputStyle.NORMAL))
+            styleInputNormal(button);
+        else if(style.equals(InputStyle.ERROR))
+            styleInputError(button);
+    }
+
+    public static void styleInputNormal(Button button) {
+        button.getStyleClass().remove("red-button");
+        button.getStyleClass().add("green-button");
+    }
+
+    public static void styleInputError(Button button) {
+        button.getStyleClass().remove("green-button");
+        button.getStyleClass().add("red-button");
+    }
 
     public static void styleInput(TextField textField, Label label,
       InputStyle style) {
