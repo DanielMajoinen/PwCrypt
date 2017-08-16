@@ -21,6 +21,10 @@ public class PwCrypt extends MobileApplication {
     private static final Logger logger =
       LogManager.getLogger(PwCrypt.class);
 
+    private static final int WINDOW_MIN_WIDTH = 350;
+
+    private static final int WINDOW_MIN_HEIGHT = 600;
+
     // Name of the global css file
     private static final String GLOBAL_CSS = "global.css";
 
@@ -41,6 +45,9 @@ public class PwCrypt extends MobileApplication {
     @Override
     public void postInit(Scene scene) {
         Swatch.BLUE.assignTo(scene);
+
+        ((Stage) scene.getWindow()).setMinWidth(WINDOW_MIN_WIDTH);
+        ((Stage) scene.getWindow()).setMinHeight(WINDOW_MIN_HEIGHT);
 
         scene.getStylesheets().add(PwCrypt.class.getResource(GLOBAL_CSS)
           .toExternalForm());
