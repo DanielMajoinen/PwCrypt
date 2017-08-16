@@ -1,4 +1,4 @@
-package com.majoinen.d.pwcrypt;
+package com.majoinen.d.pwcrypt.views;
 
 import com.gluonhq.charm.down.Platform;
 import com.gluonhq.charm.down.Services;
@@ -9,7 +9,7 @@ import com.gluonhq.charm.glisten.control.NavigationDrawer;
 import com.gluonhq.charm.glisten.control.NavigationDrawer.Item;
 import com.gluonhq.charm.glisten.control.NavigationDrawer.ViewItem;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
-import com.majoinen.d.pwcrypt.views.ViewManager;
+import com.majoinen.d.pwcrypt.PwCrypt;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 
