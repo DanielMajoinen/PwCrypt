@@ -75,6 +75,11 @@
     -fx-background-color: #b22f31;
 }
 
+.root .red-button:hover {
+    -fx-text-fill: #fff;
+    -fx-background-color: #89292b;
+}
+
 .root .red-button-hollow {
     -fx-text-fill: #b22f31;
     -fx-border-color: #b22f31;
