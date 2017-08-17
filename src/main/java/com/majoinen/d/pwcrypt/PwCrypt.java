@@ -30,16 +30,16 @@ public class PwCrypt extends MobileApplication {
     private static final String ICON = "/icon.png";
 
     // Device UUID
-    private static String deviceUuid;
+    private static String deviceUUID;
 
     public static String getDeviceUUID() {
-        return deviceUuid;
+        return deviceUUID;
     }
 
     @Override
     public void init() throws Exception {
         logger.debug("Private Storage: " + Path.File.privateStorage());
-        deviceUuid = DeviceUUIDInitialiser.initDeviceUUID();
+        deviceUUID = DeviceUUIDInitialiser.initDeviceUUID();
         ViewManager.registerViewsAndDrawer(this);
         DatabaseManager.loadJDBCDriver();
     }
