@@ -9,6 +9,7 @@ import com.gluonhq.charm.glisten.control.Avatar;
 import com.gluonhq.charm.glisten.control.NavigationDrawer;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.majoinen.d.pwcrypt.PwCrypt;
+import com.majoinen.d.pwcrypt.views.credentials.CredentialsPresenter;
 import com.majoinen.d.pwcrypt.views.login.LoginPresenter;
 import com.majoinen.d.pwcrypt.views.register.RegisterPresenter;
 import javafx.scene.image.Image;
@@ -21,35 +22,27 @@ public class ViewManager {
 
     public static final AppViewRegistry REGISTRY = new AppViewRegistry();
 
-    public static final AppView LOGIN_VIEW =
-      view("Login View", LoginPresenter.class, MaterialDesignIcon.HOME,
-        HOME_VIEW, SKIP_VIEW_STACK);
+    public static final AppView LOGIN_VIEW = view("Login", LoginPresenter.class, MaterialDesignIcon.HOME, HOME_VIEW, SKIP_VIEW_STACK);
 
-    public static final AppView REGISTER_VIEW =
-      view("Secondary", RegisterPresenter.class, MaterialDesignIcon.DASHBOARD);
+    public static final AppView REGISTER_VIEW = view("Register", RegisterPresenter.class, MaterialDesignIcon.DASHBOARD);
 
-    private static AppView view(String title, Class<? extends GluonPresenter<?>>
-      presenterClass, MaterialDesignIcon menuIcon, AppView.Flag... flags ) {
-        return REGISTRY.createView(name(presenterClass), title, presenterClass,
-          menuIcon, flags);
+    public static final AppView CREDENTIALS_VIEW = view("Credentials", CredentialsPresenter.class, MaterialDesignIcon.LOCK, SHOW_IN_DRAWER);
+
+    private static AppView view(String title, Class<? extends GluonPresenter<?>> presenterClass, MaterialDesignIcon menuIcon, AppView.Flag... flags ) {
+        return REGISTRY.createView(name(presenterClass), title, presenterClass, menuIcon, flags);
     }
 
-    private static String name(Class<? extends GluonPresenter<?>>
-      presenterClass) {
-        return presenterClass.getSimpleName().toUpperCase(Locale.ROOT)
-          .replace("PRESENTER", "");
+    private static String name(Class<? extends GluonPresenter<?>> presenterClass) {
+        return presenterClass.getSimpleName().toUpperCase(Locale.ROOT).replace("PRESENTER", "");
     }
 
     public static void registerViewsAndDrawer(MobileApplication app) {
         for (AppView view : REGISTRY.getViews())
             view.registerView(app);
 
-        NavigationDrawer.Header header = new NavigationDrawer.Header(
-          "PwCrypt", "Multi View Project", new Avatar(21,
-          new Image(PwCrypt.class.getResourceAsStream("/icon.png"))));
+        NavigationDrawer.Header header = new NavigationDrawer.Header("PwCrypt", "Password Manager", new Avatar(21, new Image(PwCrypt.class.getResourceAsStream("/icon.png"))));
 
-        DefaultDrawerManager drawerManager =
-          new DefaultDrawerManager(app, header, REGISTRY.getViews());
+        DefaultDrawerManager drawerManager = new DefaultDrawerManager(app, header, REGISTRY.getViews());
 
         drawerManager.installDrawer();
     }
