@@ -50,11 +50,14 @@ public class AccountDao {
     // SQL query to add a new user to the database
     private static final String ADD_USER_QUERY =
       "INSERT INTO `account` ('account_uuid', 'email', 'data_key_id') " +
-        "VALUES (:account_uuid, :email, (SELECT last_insert_rowid()))";
+        "VALUES (:account_uuid, :email, (SELECT `seq` FROM `sqlite_sequence` " +
+        "WHERE `name` = 'data_key'))";
 
     // SQL query to get the users data_key entry
     private static final String SELECT_DATA_KEY_QUERY =
-      "SELECT `data_key` FROM `data_key`, `account` WHERE email = :email";
+      "SELECT data_key FROM data_key, account " +
+        "WHERE account.data_key_id = data_key.data_key_id " +
+        "AND email = :email";
 
     private static Map<DatabaseController, AccountDao> map;
     private DatabaseController databaseController;
