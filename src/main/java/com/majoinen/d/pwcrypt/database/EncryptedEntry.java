@@ -25,12 +25,14 @@ public class EncryptedEntry {
     // Set the index for the encrypted message
     private static final int MESSAGE_INDEX = 3;
 
+    private String entry;
     private int iterations;
     private byte[] iv;
     private byte[] salt;
     private byte[] value;
 
     public EncryptedEntry(String input) throws IllegalArgumentException {
+        entry = input;
         String[] splitValue = input.split(DELIMITER);
         if(splitValue.length != 4)
             throw new IllegalArgumentException("[EncryptionUtils] " +
@@ -79,5 +81,10 @@ public class EncryptedEntry {
     public void clean() {
         iterations = 0;
         Tools.clean(iv, salt, value);
+    }
+
+    @Override
+    public String toString() {
+        return entry;
     }
 }
