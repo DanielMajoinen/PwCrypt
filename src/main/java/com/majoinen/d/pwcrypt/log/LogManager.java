@@ -46,7 +46,7 @@ public class LogManager implements Logger {
 
     @Override
     public void error(String message, Throwable throwable) {
-        output("ERROR", message +"\n"+throwable.getMessage());
+        output("ERROR", message + " :: " + throwable.getMessage());
         throwable.printStackTrace();
     }
 
@@ -57,7 +57,7 @@ public class LogManager implements Logger {
 
     @Override
     public void fatal(String message, Throwable throwable) {
-        output("FATAL", message +"\n"+throwable.getMessage());
+        output("FATAL", message + " :: " + throwable.getMessage());
         throwable.printStackTrace();
     }
 
