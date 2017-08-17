@@ -3,10 +3,12 @@ package com.majoinen.d.pwcrypt.database;
 import com.majoinen.d.database.DatabaseController;
 import com.majoinen.d.database.exception.DBUtilsException;
 import com.majoinen.d.encryption.exception.EncryptionUtilsException;
-import com.majoinen.d.encryption.pbe.PBEKeyBuilder;
+import com.majoinen.d.encryption.pbe.BCPBEKeyBuilder;
 import com.majoinen.d.encryption.utils.Cipher;
 import com.majoinen.d.encryption.utils.EncryptionKeyGenerator;
 import com.majoinen.d.encryption.utils.Tools;
+import com.majoinen.d.pwcrypt.log.LogManager;
+import com.majoinen.d.pwcrypt.log.Logger;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -21,6 +23,9 @@ import java.util.UUID;
  * @version 1.0, 25/7/17
  */
 public class AccountDao {
+
+    private static final Logger LOGGER =
+      LogManager.getLogger(AccountDao.class);
 
     // Size of the initialization vectors
     private static final int INIT_VECTOR_SIZE = 16;
@@ -101,26 +106,29 @@ public class AccountDao {
      * @return True if the user is successfully added, or false otherwise.
      * @throws Exception
      */
-    public boolean addNewUser(String email, char[] password) throws EncryptionUtilsException, DBUtilsException {
+    public boolean addNewUser(String email, char[] password)
+      throws EncryptionUtilsException, DBUtilsException {
+
+        LOGGER.debug("Generating account UUID");
         /* Generate the account UUID */
         UUID uuid = UUID.randomUUID(); // TODO: Receive from cloud server
-
+        LOGGER.debug("Generating random encryption key");
         /* Generate a random encryption key for the new user */
         SecretKey dataKey = EncryptionKeyGenerator
           .generateRandomKey(KEY_ALGORITHM, KEY_LENGTH);
-
+        LOGGER.debug("Generating iv, salt and iterations");
         /* Generate IV, salts & iterations for data key */
         byte[] dataKeySalt = Tools.generateRandomBytes(SALT_SIZE);
         byte[] dataKeyIV = Tools.generateRandomBytes(INIT_VECTOR_SIZE);
         int dataKeyIterations = Tools.rng(MIN_ITERATIONS, MAX_ITERATIONS);
 
-        /* Create the encryption key for the users DataKey */
-        SecretKey dataKeyEncryptionKey = new PBEKeyBuilder()
+        LOGGER.debug("Deriving encryption key");
+        SecretKey dataKeyEncryptionKey = new BCPBEKeyBuilder()
           .setPassword(password)
           .setSalt(dataKeySalt, dataKeyIterations)
           .setKeyLength(KEY_LENGTH)
-          .buildSecretKey();
-
+          .buildKey();
+        LOGGER.debug("Encrypting encryption key");
         /* Use DataKeyEncryptionKey to encrypt DataKey before storing */
         byte[] encryptedDataKey = Cipher.encrypt(dataKey.getEncoded(),
           dataKeyIV, dataKeyEncryptionKey, ENCRYPTION_ALGORITHM);
@@ -128,6 +136,7 @@ public class AccountDao {
         if(encryptedDataKey.length == 0)
             return false;
 
+        LOGGER.debug("Inserting user info into database");
         /* Add the user to the database */
         // TODO: Replace with batch query
         int affectedRows = databaseController
@@ -135,11 +144,12 @@ public class AccountDao {
             .setParameter(":data_key", dataKeyIterations + ":" +
               Tools.encodeBase64(dataKeyIV, dataKeySalt, encryptedDataKey))
           .executeUpdate();
+        LOGGER.debug("Inserted data key");
         affectedRows += databaseController.prepareQuery(ADD_USER_QUERY)
             .setParameter(":account_uuid", uuid)
             .setParameter(":email", email)
           .executeUpdate();
-
+        LOGGER.debug("Inserted account info");
         /* Clean sensitive data */
         Tools.clean(password);
         Tools.clean(encryptedDataKey);
@@ -177,23 +187,26 @@ public class AccountDao {
      */
     private SecretKey getUsersDecryptedDataKey(String email, char[] password)
       throws EncryptionUtilsException, DBUtilsException {
+        LOGGER.debug("Getting users encrypted data key");
         /* Get the users encrypted data key */
         EncryptedEntry encryptedDataKey = databaseController
           .prepareQuery(SELECT_DATA_KEY_QUERY)
           .setParameter(":email", email)
-          .executeAndMap(resultSet -> new EncryptedEntry(resultSet
-            .getString("data_key")));
+          .executeAndMap(resultSet ->
+            new EncryptedEntry(resultSet.getString("data_key")));
 
+        LOGGER.debug("Executed query successfully");
         if(encryptedDataKey == null)
             return null;
-
+        LOGGER.debug("Deriving data key encryption key");
         /* Build the DataKey's encryption key */
-        SecretKey dataKeyEncryptionKey = new PBEKeyBuilder()
+        SecretKey dataKeyEncryptionKey = new BCPBEKeyBuilder()
           .setPassword(password)
           .setSalt(encryptedDataKey.getSalt(), encryptedDataKey.getIterations())
           .setKeyLength(KEY_LENGTH)
-          .buildSecretKey();
+          .buildKey();
 
+        LOGGER.debug("Decrypting data key");
         /* Decrypt DataKey */
         byte[] decryptedDataKey = Cipher.decrypt(encryptedDataKey.getValue(),
           encryptedDataKey.getIV(), dataKeyEncryptionKey, ENCRYPTION_ALGORITHM);
