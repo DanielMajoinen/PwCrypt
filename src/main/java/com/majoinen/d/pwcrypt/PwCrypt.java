@@ -2,6 +2,7 @@ package com.majoinen.d.pwcrypt;
 
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.visual.Swatch;
+import com.majoinen.d.pwcrypt.database.DatabaseManager;
 import com.majoinen.d.pwcrypt.log.LogManager;
 import com.majoinen.d.pwcrypt.log.Logger;
 import com.majoinen.d.pwcrypt.util.DeviceUUIDInitialiser;
@@ -40,6 +41,7 @@ public class PwCrypt extends MobileApplication {
         logger.debug("Private Storage: " + Path.File.privateStorage());
         deviceUuid = DeviceUUIDInitialiser.initDeviceUUID();
         ViewManager.registerViewsAndDrawer(this);
+        DatabaseManager.loadJDBCDriver();
     }
 
     @Override
