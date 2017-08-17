@@ -1,14 +1,16 @@
 package com.majoinen.d.pwcrypt.controllers;
 
 import com.majoinen.d.database.DatabaseController;
-import com.majoinen.d.database.DatabaseControllerFactory;
 import com.majoinen.d.database.exception.DBUtilsException;
 import com.majoinen.d.encryption.exception.EncryptionUtilsException;
-import com.majoinen.d.pwcrypt.PwCrypt;
 import com.majoinen.d.pwcrypt.database.AccountDao;
+import com.majoinen.d.pwcrypt.database.DatabaseManager;
+import com.majoinen.d.pwcrypt.exception.PwCryptException;
 import com.majoinen.d.pwcrypt.input.InputStyle;
 import com.majoinen.d.pwcrypt.log.LogManager;
 import com.majoinen.d.pwcrypt.log.Logger;
+import com.majoinen.d.pwcrypt.util.Path;
+import com.majoinen.d.pwcrypt.views.ViewManager;
 import com.majoinen.d.pwcrypt.views.login.LoginPresenter;
 
 /**
@@ -29,8 +31,9 @@ public class LoginController {
     public void login(String email, String password) {
         DatabaseController databaseController;
         try {
-            databaseController = DatabaseControllerFactory.getController(
-              email, PwCrypt.DATABASE_CONFIG);
+            databaseController = DatabaseManager.getController(email);
+            databaseController.setProperty("root.directory",
+              Path.File.privateStorage());
             if(!databaseController.databaseExists()) {
                 LOGGER.debug("Database does not exist");
                 failedLogin();
@@ -38,7 +41,7 @@ public class LoginController {
                 attemptLogin(email, password, AccountDao.getInstance(
                   databaseController));
             }
-        } catch(DBUtilsException e) {
+        } catch(DBUtilsException | PwCryptException e) {
             LOGGER.error("Error logging in", e);
             failedLogin(); // TODO: Change to error alert
         }
@@ -61,7 +64,7 @@ public class LoginController {
 
     private void successfulLogin() {
         LOGGER.info("Successful login");
-        PwCrypt.getInstance().showMessage("Successfully logged in!");
+        ViewManager.CREDENTIALS_VIEW.switchView();
     }
 
     private void failedLogin() {
