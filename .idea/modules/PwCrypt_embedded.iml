@@ -29,14 +29,15 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Gradle: com.gluonhq:glisten-afterburner:1.2.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.bouncycastle:bcprov-jdk15on:1.57" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-display:3.5.0" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle:3.5.0" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-statusbar:3.5.0" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-storage:3.5.0" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-glisten:4.3.2" level="project" />
     <orderEntry type="library" name="Gradle: com.airhacks:afterburner.mfx:1.6.3" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.xerial:sqlite-jdbc:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-core:3.5.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.xerial:sqlite-jdbc:3.7.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-display-desktop:3.5.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle-desktop:3.5.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-storage-desktop:3.5.0" level="project" />

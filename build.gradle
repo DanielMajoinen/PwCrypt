@@ -22,9 +22,10 @@ dependencies {
     compile files('libs/DatabaseUtils-1.0.jar')
     compile files('libs/EncryptionUtils-1.0.jar')
     compile 'com.gluonhq:glisten-afterburner:1.2.0'
+    compile 'org.bouncycastle:bcprov-jdk15on:1.57'
     desktopRuntime 'org.xerial:sqlite-jdbc:3.8.11.2'
-    embeddedRuntime 'org.xerial:sqlite-jdbc:3.7.2'
     androidRuntime 'org.sqldroid:sqldroid:1.0.3'
+    embeddedRuntime 'org.xerial:sqlite-jdbc:3.7.2'
 }
 
 jfxmobile {

@@ -29,6 +29,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Gradle: com.gluonhq:glisten-afterburner:1.2.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.bouncycastle:bcprov-jdk15on:1.57" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-display:3.5.0" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle:3.5.0" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-statusbar:3.5.0" level="project" />
